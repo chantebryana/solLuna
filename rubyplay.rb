@@ -26,53 +26,32 @@ monthHash["Mar."] = []
 
 #=begin
 #CE working on this right now
-#print out values for index 1 or 2
+#semi-automatically inject each month from rawHash
 rawHash.each do |row, arr|
-  puts "#{row}: "
+  a = []
+  b = []
+  c = []
   arr[1..-1].each_with_index do |v,i|
     #puts "#{i}"
-    if i == 1 or i == 2
-      puts v
-    end
+    if i == 0 or i == 1
+      a.push(v)
+	  if a.length == 2
+	    monthHash["Jan."].push(a)
+	  end
+    elsif i == 2 or i == 3
+	  b.push(v)
+	  if b.length == 2
+	    monthHash["Feb."].push(b)
+	  end
+	  
+	elsif i == 4 or i == 5
+	  c.push(v)
+	  if c.length == 2
+	    monthHash["Mar."].push(c)
+	  end
+	end
   end
 end
 #=end
 
-#manually inject each month from rawHash
-#                            changing element
-#                               ______
-monthHash["Jan."].push (rawHash["row1"][1..2])
-monthHash["Jan."].push (rawHash["row2"][1..2])
-monthHash["Jan."].push (rawHash["row3"][1..2])
-
-monthHash["Feb."].push (rawHash["row1"][3..4])
-monthHash["Feb."].push (rawHash["row2"][3..4])
-monthHash["Feb."].push (rawHash["row3"][3..4])
-
-monthHash["Mar."].push (rawHash["row1"][5..6])
-monthHash["Mar."].push (rawHash["row2"][5..6])
-monthHash["Mar."].push (rawHash["row3"][5..6])
-
-#puts(monthHash)
-
-
-=begin
-months = rawArr[0].split(" ")
-#puts(months[0..-1])
-#puts("\n")
-#puts(rawArr[1])
-#puts("\n")
-row1 = rawArr[3].split(" ")
-row2 = rawArr[4].split(" ")
-row3 = rawArr[5].split(" ")
-
-puts(row1[1..-1])
-#puts(months[0] + " sunrise: " + row1[1] + ", sunset: " + row1[2])
-#puts(months[1] + " sunrise: " + row1[3] + ", sunset: " + row1[4])
-#puts(months[2] + " sunrise: " + row1[5] + ", sunset: " + row1[6])
-
-#puts("\n")
-#puts(rawArr[4])
-#puts("\n")
-#puts(rawArr[5])
-=end
+puts(monthHash)
