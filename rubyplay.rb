@@ -18,22 +18,29 @@ rawHash["row1"] = rawArr[3].split(" ")
 rawHash["row2"] = rawArr[4].split(" ")
 rawHash["row3"] = rawArr[5].split(" ")
 
-=begin
-#CE working on this right now
-#print out each table row from hash
-rawHash.each do |row, arr|
-  #puts "#{row}: #{arr}"
-  if 
-  
-  end
-end
-=end
-
 #declare hash variables
 monthHash = Hash.new
 monthHash["Jan."] = []
 monthHash["Feb."] = []
 monthHash["Mar."] = []
+
+#=begin
+#CE working on this right now
+# https://stackoverflow.com/questions/9279768/how-do-i-loop-over-a-hash-of-hashes-in-ruby
+#print out each table row from hash
+rawHash.each do |row, arr|
+  puts "#{row}: "
+  arr[1..-1].each do |v, i|
+    #puts "#{i}"
+    if v == "0750"
+      puts i
+    end
+  end
+  #if rawHash["row1"][1] == "0750"
+    #puts("yay")
+  #end
+end
+#=end
 
 #manually inject each month from rawHash
 #                            changing element
