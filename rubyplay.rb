@@ -26,19 +26,15 @@ monthHash["Mar."] = []
 
 #=begin
 #CE working on this right now
-# https://stackoverflow.com/questions/9279768/how-do-i-loop-over-a-hash-of-hashes-in-ruby
-#print out each table row from hash
+#print out values for index 1 or 2
 rawHash.each do |row, arr|
   puts "#{row}: "
-  arr[1..-1].each do |v, i|
+  arr[1..-1].each_with_index do |v,i|
     #puts "#{i}"
-    if v == "0750"
-      puts i
+    if i == 1 or i == 2
+      puts v
     end
   end
-  #if rawHash["row1"][1] == "0750"
-    #puts("yay")
-  #end
 end
 #=end
 
