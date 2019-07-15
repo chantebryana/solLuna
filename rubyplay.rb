@@ -6,9 +6,7 @@ Day Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set 
 03  0750 1707  0733 1743  0656 1817  0604 1851  0519 1923  0453 1952  0456 2000  0521 1939  0552 1854  0623 1803  0657 1717  0732 1655'
 
 #organizes each row into its relevant hash value
-
 rawArr = table.split("\n")
-#rawHash = Hash["row1" => [], "row2" => [], "row3" => []]
 
 #declare hash variable
 rawHash = Hash.new
@@ -24,7 +22,6 @@ monthHash["Jan."] = []
 monthHash["Feb."] = []
 monthHash["Mar."] = []
 
-#=begin
 #CE working on this right now
 #semi-automatically inject each month from rawHash
 rawHash.each do |row, arr|
@@ -32,7 +29,6 @@ rawHash.each do |row, arr|
   b = []
   c = []
   arr[1..-1].each_with_index do |v,i|
-    #puts "#{i}"
     if i == 0 or i == 1
       a.push(v)
 	  if a.length == 2
@@ -52,6 +48,5 @@ rawHash.each do |row, arr|
 	end
   end
 end
-#=end
 
 puts(monthHash)
