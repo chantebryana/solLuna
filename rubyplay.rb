@@ -61,7 +61,9 @@ monthHash = Hash.new
 
 #automatically populate monthHash keys with month names from table
 months.each {|x| monthHash[x] = []}
-puts monthHash
+#puts monthHash
+
+#puts rawHash
 
 #CE working on this right now
 #semi-automatically inject each month from rawHash
@@ -75,11 +77,13 @@ rawHash.each do |row, arr|
 	    monthHash["Jan."].push(a)
 		a = []
 	  end
-    elsif i == 2 or i == 3
-	  a.push(v)
-	  if a.length == 2
-	    monthHash["Feb."].push(a)
-		a = []
+    elsif i == 2 or i == 3 
+	  if row != "row29" and row != "row30" and row != "row31"
+	    a.push(v)
+	    if a.length == 2
+	      monthHash["Feb."].push(a)
+		  a = []
+	    end
 	  end
 	elsif i == 4 or i == 5
 	  a.push(v)
@@ -145,4 +149,7 @@ rawHash.each do |row, arr|
   end
 end
 
-puts(monthHash)
+monthHash.each do |key, value|
+  puts "#{key} #{value}"
+  puts "\n"
+end
