@@ -66,109 +66,24 @@ monthHash = Hash.new
 
 #automatically populate monthHash keys with month names from table
 months.each {|x| monthHash[x] = []}
-#puts monthHash
 
-#puts rawHash
-
-#CE working on this right now
-#semi-automatically inject each month from rawHash
-#need to account for special logic required for rawHash rows 29, 30, 31
-
-#w/Jim
-monthArr = ["Jan.", "Jan.", "Feb.", "Feb."]
-
-
-
-rawHash.each do |row, arr|
-  a = []
-	arr[1..-1].each_with_index do |v,i|
-    if i == 0 or i == 1
-      a.push(v)
-			if a.length == 2
-				monthHash["Jan."].push(a)
-        #w/Jim
-        #monthHash[monthArr[i]].push(a)
-				a = []
-			end
-		elsif i == 2 or i == 3 
-			#this if is super jank but playing around w/ logic:
-			if row == "row29" or row == "row30" or row == "row31"
-				a.push(v)
-				if a.length == 2
-					monthHash["Mar."].push(a)
-					a = []
-				end
-			elsif
-				a.push(v)
-				if a.length == 2
-					monthHash["Feb."].push(a)
-					a = []
-				end
-			end
-		elsif i == 4 or i == 5
-			a.push(v)
-			if a.length == 2
-				monthHash["Mar."].push(a)
-				a = []
-			end
-		elsif i == 6 or i == 7
-			a.push(v)
-			if a.length == 2
-				monthHash["Apr."].push(a)
-				a = []
-			end
-		elsif i == 8 or i == 9
-			a.push(v)
-			if a.length == 2
-				monthHash["May"].push(a)
-				a = []
-			end
-		elsif i == 10 or i == 11
-			a.push(v)
-			if a.length == 2
-				monthHash["June"].push(a)
-				a = []
-			end
-		elsif i == 12 or i == 13
-			a.push(v)
-			if a.length == 2
-				monthHash["July"].push(a)
-				a = []
-			end
-		elsif i == 14 or i == 15
-			a.push(v)
-			if a.length == 2
-				monthHash["Aug."].push(a)
-				a = []
-			end
-		elsif i == 16 or i == 17
-			a.push(v)
-			if a.length == 2
-				monthHash["Sept."].push(a)
-				a = []
-			end
-		elsif i == 18 or i == 19
-			a.push(v)
-			if a.length == 2
-				monthHash["Oct."].push(a)
-				a = []
-			end
-		elsif i == 20 or i == 21
-			a.push(v)
-			if a.length == 2
-				monthHash["Nov."].push(a)
-				a = []
-			end
-		elsif i == 22 or i == 23
-			a.push(v)
-			if a.length == 2
-				monthHash["Dec."].push(a)
-				a = []
-			end
-		end
-  end
+#create an array with each month listed twice: this will help for the rawHash loop further down (provide two month indices to match up with two time values)
+monthArr = []
+months.each do |x|
+	monthArr.push(x)
+	monthArr.push(x)
 end
 
+#CE working on this right now
+#fully-automated loop that injects each month's data from rawHash
+#still need to account for special logic required for rawHash rows 29, 30, 31
+rawHash.each do |key, value|
+	value[1..-1].each_with_index do |v, i|
+		monthHash[(monthArr[i])].push(v)
+	end
+end
+
+#display monthHash to console
 monthHash.each do |key, value|
   puts "#{key} #{value}"
   puts "\n"
