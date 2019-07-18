@@ -51,6 +51,7 @@ rawHash = Hash.new
 
 #playing with .split(/ /)
 print (rawArr[33].split(/ /))
+puts("\n\n")
 #print (rawArr[33].split(/  /))
 
 #=begin
@@ -68,10 +69,10 @@ monthHash = Hash.new
 months.each {|x| monthHash[x] = []}
 
 #create an array with each month listed twice: this will help for the rawHash loop further down (provide two month indices to match up with two time values)
-monthArr = []
+monthDoubleIndex = []
 months.each do |x|
-	monthArr.push(x)
-	monthArr.push(x)
+	monthDoubleIndex.push(x)
+	monthDoubleIndex.push(x)
 end
 
 #CE working on this right now
@@ -79,7 +80,7 @@ end
 #still need to account for special logic required for rawHash rows 29, 30, 31
 rawHash.each do |key, value|
 	value[1..-1].each_with_index do |v, i|
-		monthHash[(monthArr[i])].push(v)
+		monthHash[(monthDoubleIndex[i])].push(v)
 	end
 end
 
