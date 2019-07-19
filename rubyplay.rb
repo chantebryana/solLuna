@@ -43,10 +43,10 @@ Day Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set 
 30  0737 1738             0611 1847  0523 1920  0454 1949  0454 2001  0517 1943  0548 1900  0619 1808  0653 1722  0729 1656  0749 1704
 31  0736 1739             0609 1848             0454 1950             0518 1942  0549 1859             0654 1721             0750 1704'
 
-#organizes each row into its relevant hash value
+#convert raw txt into array; each line is an array element
 rawArr = table.split("\n")
 
-#declare hash variable
+#declare new hash variable
 rawHash = Hash.new
 
 #playing with .split(/ /)
@@ -65,21 +65,45 @@ puts"output: "
 print e
 puts("\n\n")
 
-=begin
-#automatically inject each key from table
+#=begin
+#automatically inject each key and value from rawArr
+#CE add some end-of-month logic here
+#returns {"row1"=>["01", "0750"..."1656"], "row2"=>["02", "0750"...]}
 (1..31).each {|x| rawHash["row"+x.to_s] = rawArr[x+2].split(" ")}
 
+(1..31).each {|x| rawHash["row"+x.to_s] = []}
+
+=begin
+(1..31).each do |x|
+	rawArr[x+2].split(/    /).each do |y|
+		if y == ""
+			rawHash["row"+y.to_s] = "0"
+		else
+			rawHash
+		end
+	end
+end
+=end
+
+rawHash.each do |key,value|
+	puts "#{key}: #{value}"
+end
+
+=begin
 
 #grab months from rawArr
+#returns ["Jan.", "Feb." ... "Dec."]
 months = rawArr[0].split(" ")
 
-#declare hash variable
+#declare new hash variable
 monthHash = Hash.new
 
 #automatically populate monthHash keys with month names from table
+#returns {"Jan."=>[], "Feb."=>[] ... "Dec."=>[]}
 months.each {|x| monthHash[x] = []}
 
 #create an array with each month listed twice: this will help for the rawHash loop further down (provide two month indices to match up with two time values)
+#returns ["Jan.", "Jan.", "Feb.", "Feb." ... "Dec.", "Dec."]
 monthDoubleIndex = []
 months.each do |x|
 	monthDoubleIndex.push(x)
