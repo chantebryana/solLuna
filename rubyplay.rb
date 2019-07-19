@@ -50,11 +50,22 @@ rawArr = table.split("\n")
 rawHash = Hash.new
 
 #playing with .split(/ /)
-print (rawArr[33].split(/ /))
+#CE this looks like the workings of a solution!
+e = []
+(rawArr[33].split(/    /)).each do |x|
+	if x == ""
+		e.push("0")
+	else
+		x.split(" ").each do |y|
+			e.push(y)
+		end
+	end
+end
+puts"output: "
+print e
 puts("\n\n")
-#print (rawArr[33].split(/  /))
 
-#=begin
+=begin
 #automatically inject each key from table
 (1..31).each {|x| rawHash["row"+x.to_s] = rawArr[x+2].split(" ")}
 
@@ -89,4 +100,4 @@ monthHash.each do |key, value|
   puts "#{key} #{value}"
   puts "\n"
 end
-#=end
+=end
