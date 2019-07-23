@@ -31,13 +31,25 @@ end
 =end
 #=begin
 eHash = Hash.new
-(4..5).each do |i|
+(1..5).each do |i|
 	eHash[i] = []
 end
 print eHash
 puts "\n\n"
 
-e = []
+#e = []
+(3..7).each do |i|
+	rawArr[i].split(/    /).each do |x|
+		if x == ""
+			eHash[i-2].push("0")
+		else
+			x.split(" ").each do |y|
+				eHash[i-2].push(y)
+			end
+		end
+	end
+end
+=begin
 (rawArr[06].split(/    /)).each do |x|
 	if x == ""
 		eHash[4].push("0")
@@ -57,7 +69,7 @@ end
 		end
 	end
 end
-#=end
+=end
 eHash.each do |key, value|
 	puts "#{key}: #{value}"
 end

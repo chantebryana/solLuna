@@ -49,47 +49,39 @@ rawArr = table.split("\n")
 #declare new hash variable
 rawHash = Hash.new
 
+
 #playing with .split(/ /)
 #CE this looks like the workings of a solution!
-e = []
-(rawArr[33].split(/    /)).each do |x|
-	if x == ""
-		e.push("0")
-	else
-		x.split(" ").each do |y|
-			e.push(y)
-		end
-	end
+
+#declare new hash
+eHash = Hash.new
+
+#fill hash with number keys and empty array values. 
+(1..31).each do |i|
+	rawHash["row"+i.to_s] = []
 end
-puts"output: "
-print e
-puts("\n\n")
 
-#=begin
-#automatically inject each key and value from rawArr
-#CE add some end-of-month logic here
-#returns {"row1"=>["01", "0750"..."1656"], "row2"=>["02", "0750"...]}
-(1..31).each {|x| rawHash["row"+x.to_s] = rawArr[x+2].split(" ")}
-
-(1..31).each {|x| rawHash["row"+x.to_s] = []}
-
-=begin
-(1..31).each do |x|
-	rawArr[x+2].split(/    /).each do |y|
-		if y == ""
-			rawHash["row"+y.to_s] = "0"
+#Fill eHash with rise/set times from rawArr. 
+#Empty slots (rows 29, 30, 31) will be filled with "0"
+#Returns {row1: ["01", "0750"..."1656"] ... row31: ["31", "0736", "1739", "0", "0"...]}
+(3..33).each do |i|
+	rawArr[i].split(/    /).each do |x|
+		if x == ""
+			rawHash["row"+(i-2).to_s].push("0")
 		else
-			rawHash
+			x.split(" ").each do |y|
+				rawHash["row"+(i-2).to_s].push(y)
+			end
 		end
 	end
 end
-=end
 
+#print rawHash to console
 rawHash.each do |key,value|
 	puts "#{key}: #{value}"
 end
 
-=begin
+#=begin
 
 #grab months from rawArr
 #returns ["Jan.", "Feb." ... "Dec."]
@@ -124,4 +116,4 @@ monthHash.each do |key, value|
   puts "#{key} #{value}"
   puts "\n"
 end
-=end
+#=end
