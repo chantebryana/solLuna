@@ -1,0 +1,509 @@
+// 12/31/2022, 99 phases 
+https://api.usno.navy.mil/moon/phase?date=12/31/2022&nump=99
+
+{
+  "error": false,
+  "apiversion": "2.2.0",
+  "year": 2022,
+  "month": 12,
+  "day": 31,
+  "numphases": 99,
+  "datechanged": false,
+  "phasedata": [
+    {
+      "phase": "Full Moon",
+      "date": "2023 Jan 06",
+      "time": "23:08"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2023 Jan 15",
+      "time": "02:10"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2023 Jan 21",
+      "time": "20:53"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2023 Jan 28",
+      "time": "15:19"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2023 Feb 05",
+      "time": "18:28"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2023 Feb 13",
+      "time": "16:01"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2023 Feb 20",
+      "time": "07:06"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2023 Feb 27",
+      "time": "08:06"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2023 Mar 07",
+      "time": "12:40"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2023 Mar 15",
+      "time": "02:08"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2023 Mar 21",
+      "time": "17:23"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2023 Mar 29",
+      "time": "02:32"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2023 Apr 06",
+      "time": "04:34"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2023 Apr 13",
+      "time": "09:11"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2023 Apr 20",
+      "time": "04:12"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2023 Apr 27",
+      "time": "21:20"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2023 May 05",
+      "time": "17:34"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2023 May 12",
+      "time": "14:28"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2023 May 19",
+      "time": "15:53"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2023 May 27",
+      "time": "15:22"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2023 Jun 04",
+      "time": "03:42"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2023 Jun 10",
+      "time": "19:31"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2023 Jun 18",
+      "time": "04:37"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2023 Jun 26",
+      "time": "07:50"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2023 Jul 03",
+      "time": "11:39"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2023 Jul 10",
+      "time": "01:48"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2023 Jul 17",
+      "time": "18:32"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2023 Jul 25",
+      "time": "22:07"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2023 Aug 01",
+      "time": "18:32"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2023 Aug 08",
+      "time": "10:28"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2023 Aug 16",
+      "time": "09:38"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2023 Aug 24",
+      "time": "09:57"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2023 Aug 31",
+      "time": "01:35"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2023 Sep 06",
+      "time": "22:21"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2023 Sep 15",
+      "time": "01:40"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2023 Sep 22",
+      "time": "19:32"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2023 Sep 29",
+      "time": "09:57"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2023 Oct 06",
+      "time": "13:48"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2023 Oct 14",
+      "time": "17:55"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2023 Oct 22",
+      "time": "03:29"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2023 Oct 28",
+      "time": "20:24"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2023 Nov 05",
+      "time": "08:37"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2023 Nov 13",
+      "time": "09:27"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2023 Nov 20",
+      "time": "10:50"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2023 Nov 27",
+      "time": "09:16"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2023 Dec 05",
+      "time": "05:49"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2023 Dec 12",
+      "time": "23:32"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2023 Dec 19",
+      "time": "18:39"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2023 Dec 27",
+      "time": "00:33"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2024 Jan 04",
+      "time": "03:30"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2024 Jan 11",
+      "time": "11:57"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2024 Jan 18",
+      "time": "03:52"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2024 Jan 25",
+      "time": "17:54"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2024 Feb 02",
+      "time": "23:18"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2024 Feb 09",
+      "time": "22:59"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2024 Feb 16",
+      "time": "15:01"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2024 Feb 24",
+      "time": "12:30"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2024 Mar 03",
+      "time": "15:23"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2024 Mar 10",
+      "time": "09:00"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2024 Mar 17",
+      "time": "04:11"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2024 Mar 25",
+      "time": "07:00"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2024 Apr 02",
+      "time": "03:15"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2024 Apr 08",
+      "time": "18:21"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2024 Apr 15",
+      "time": "19:13"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2024 Apr 23",
+      "time": "23:49"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2024 May 01",
+      "time": "11:27"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2024 May 08",
+      "time": "03:22"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2024 May 15",
+      "time": "11:48"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2024 May 23",
+      "time": "13:53"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2024 May 30",
+      "time": "17:13"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2024 Jun 06",
+      "time": "12:38"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2024 Jun 14",
+      "time": "05:18"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2024 Jun 22",
+      "time": "01:08"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2024 Jun 28",
+      "time": "21:53"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2024 Jul 05",
+      "time": "22:57"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2024 Jul 13",
+      "time": "22:49"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2024 Jul 21",
+      "time": "10:17"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2024 Jul 28",
+      "time": "02:51"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2024 Aug 04",
+      "time": "11:13"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2024 Aug 12",
+      "time": "15:19"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2024 Aug 19",
+      "time": "18:26"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2024 Aug 26",
+      "time": "09:26"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2024 Sep 03",
+      "time": "01:55"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2024 Sep 11",
+      "time": "06:05"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2024 Sep 18",
+      "time": "02:34"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2024 Sep 24",
+      "time": "18:50"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2024 Oct 02",
+      "time": "18:49"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2024 Oct 10",
+      "time": "18:55"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2024 Oct 17",
+      "time": "11:26"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2024 Oct 24",
+      "time": "08:03"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2024 Nov 01",
+      "time": "12:47"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2024 Nov 09",
+      "time": "05:55"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2024 Nov 15",
+      "time": "21:28"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2024 Nov 23",
+      "time": "01:28"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2024 Dec 01",
+      "time": "06:21"
+    },
+    {
+      "phase": "First Quarter",
+      "date": "2024 Dec 08",
+      "time": "15:26"
+    },
+    {
+      "phase": "Full Moon",
+      "date": "2024 Dec 15",
+      "time": "09:02"
+    },
+    {
+      "phase": "Last Quarter",
+      "date": "2024 Dec 22",
+      "time": "22:18"
+    },
+    {
+      "phase": "New Moon",
+      "date": "2024 Dec 30",
+      "time": "22:27"
+    }
+  ]
+}
