@@ -1,11 +1,9 @@
-table = 'Jan.       Feb.       Mar.       Apr.       May        June       July       Aug.       Sept.      Oct.       Nov.       Dec. 
-Day Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set  Rise  Set
-    h m  h m   h m  h m   h m  h m   h m  h m   h m  h m   h m  h m   h m  h m   h m  h m   h m  h m   h m  h m   h m  h m   h m  h m
-01  0750 1706  0735 1740  0659 1815  0607 1849  0522 1921  0453 1951  0455 2001  0519 1941  0550 1857  0620 1806  0655 1719  0730 1656
-02  0739 1735  0700 1813  0614 1845  0526 1918  0456 1947  0453 2001  0515 1945  0546 1903  0617 1811  0650 1725  0727 1657  0749 1702
-03  0738 1737             0613 1846  0524 1919  0455 1948  0454 2001  0516 1944  0547 1902  0618 1809  0652 1723  0728 1656  0749 1703
-04  0737 1738             0611 1847  0523 1920  0454 1949  0454 2001  0517 1943  0548 1900  0619 1808  0653 1722  0729 1656  0749 1704
-05  0736 1739             0609 1848             0454 1950             0518 1942  0549 1859             0654 1721             0750 1704'
+#first, manually copy table data from html file to an appropriately named txt file. 
+#Then save it to this variable table
+table = File.read("sunrisesunset2020.txt")
+#quick and dirty daylight savings time array from wikipedia
+#note: DST goes into effect on-the-day at 2am
+dst = ["2019-03-10", "2019-11-03", "2020-03-08", "2020-11-01", "2021-03-14", "2021-11-07"]
 
 #convert raw txt into array; each line is an array element
 rawArr = table.split("\n")
@@ -13,75 +11,85 @@ rawArr = table.split("\n")
 #declare new hash variable
 rawHash = Hash.new
 
-#playing with .split(/ /)
-#CE this looks like the workings of a solution!
-=begin
-e = []
-rawArr.each do |value|
-	value.split(/    /).each do |y|
-		if y == ""
-			e.push("0")
-		else 
-			y.split(" ").each do |z|
-				e.push(z)
-			end 
-		end
-	end
+#fill rawHash with number keys and empty array values. 
+#Returns {row1: [], row2: [] ... row 31: []}
+(1..31).each do |i|
+	rawHash["row"+i.to_s] = []
 end
-=end
-#=begin
-eHash = Hash.new
-(1..5).each do |i|
-	eHash[i] = []
-end
-print eHash
-puts "\n\n"
 
-#e = []
-(3..7).each do |i|
+#Fill rawHash with rise/set times from rawArr. 
+#Empty slots (rows 29, 30, 31) will be filled with `false` (so that it'll fail an an 'if rawHash[i]' test)
+#Returns {row1: ["01", "0750"..."1656"] ... row31: ["31", "0736", "1739", false, false...]}
+(3..33).each do |i|
 	rawArr[i].split(/    /).each do |x|
 		if x == ""
-			eHash[i-2].push("0")
+			rawHash["row"+(i-2).to_s].push(false)
 		else
 			x.split(" ").each do |y|
-				eHash[i-2].push(y)
+				rawHash["row"+(i-2).to_s].push(y)
 			end
 		end
 	end
 end
-=begin
-(rawArr[06].split(/    /)).each do |x|
-	if x == ""
-		eHash[4].push("0")
-	else
-		x.split(" ").each do |y|
-			eHash[4].push(y)
+
+#grab months from rawArr
+#returns ["Jan.", "Feb." ... "Dec."]
+months = rawArr[0].split(" ")
+
+#declare new hash variable
+monthHash = Hash.new
+
+#automatically populate monthHash keys with month names from table
+#returns {"Jan."=>[], "Feb."=>[] ... "Dec."=>[]}
+months.each {|x| monthHash[x] = []}
+
+#create an array with each month listed twice: 
+#this will help for the rawHash loop further down 
+#(provide two month indices to match up with two time values)
+#returns ["Jan.", "Jan.", "Feb.", "Feb." ... "Dec.", "Dec."]
+monthDoubleIndex = []
+months.each do |x|
+	monthDoubleIndex.push(x)
+	monthDoubleIndex.push(x)
+end
+
+#fully-automated loop that injects each month's data from rawHash
+rawHash.each do |key, value|
+	value[1..-1].each_with_index do |v, i|
+		monthHash[(monthDoubleIndex[i])].push(v)
+	end
+end
+
+#CE playing in the mud
+#set variable for quick-and-dirty daylight savings time
+#begins when value is >= index
+#lasts while value is < index
+dst_play = Hash.new
+dst_play = ["Mar.", 18, "Nov.", 4]
+
+#display monthHash+dst to console
+monthHash.each do |key, value|
+	if key == dst_play[0]
+		value.each_with_index do |v,i|
+			if i == dst_play[1]
+				#v.to_i += 100
+				puts "#{key} #{v}"
+				puts "\n"
+			end
+		end
+	elsif key == dst_play[2]
+		value.each_with_index do |v,i|
+			if i == dst_play[3]
+				#v.to_i += 100
+				puts "#{key} #{v}"
+				puts "\n"
+			end
 		end
 	end
 end
 
-(rawArr[07].split(/    /)).each do |x|
-	if x == ""
-		eHash[5].push("0")
-	else
-		x.split(" ").each do |y|
-			eHash[5].push(y)
-		end
-	end
-end
-=end
-eHash.each do |key, value|
-	puts "#{key}: #{value}"
-end
 
-#=begin
-#automatically inject each key and value from rawArr
-#CE add some end-of-month logic here
-#returns {"row1"=>["01", "0750"..."1656"], "row2"=>["02", "0750"...]}
-(1..5).each {|x| rawHash["row"+x.to_s] = rawArr[x+2].split(" ")}
-
-(1..5).each {|x| rawHash["row"+x.to_s] = []}
-
-rawHash.each do |key,value|
-	puts "#{key}: #{value}"
-end
+#items for consideration: 
+#  accounting for daylight savings time (do I need another table of dst dates?)
+#  reading raw html file instead of manually-created text file?
+#  whether to keep this data as a hash; to export it to txt / csv; or to import it into a database table?
