@@ -64,22 +64,36 @@ end
 #set variable for quick-and-dirty daylight savings time
 #begins when value is >= index
 #lasts while value is < index
-dst_play = Hash.new
-dst_play = ["Mar.", 18, "Nov.", 4]
+dst_raw = ["Mar.", 10, "Nov.", 3]
+#convert raw dst date numbers into the correct index 
+#to use when searching through monthHash
+#ex: ["Mar.", 10, "Nov.", 3] gets converted into ["Mar.", 18, "Nov.", 4]
+def date_to_index (array)
+	a = []
+	array.each_with_index do |x, i|
+		if i % 2 == 1
+			a.push((x*2)-2)
+		else
+			a.push(x)
+		end
+	end
+	return a
+end
+dst_index = date_to_index dst_raw
 
 #display monthHash+dst to console
 monthHash.each do |key, value|
-	if key == dst_play[0]
+	if key == dst_index[0]
 		value.each_with_index do |v,i|
-			if i == dst_play[1]
+			if i == dst_index[1]
 				#v.to_i += 100
 				puts "#{key} #{v}"
 				puts "\n"
 			end
 		end
-	elsif key == dst_play[2]
+	elsif key == dst_index[2]
 		value.each_with_index do |v,i|
-			if i == dst_play[3]
+			if i == dst_index[3]
 				#v.to_i += 100
 				puts "#{key} #{v}"
 				puts "\n"
