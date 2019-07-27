@@ -1,6 +1,9 @@
 #first, manually copy table data from html file to an appropriately named txt file. 
 #Then save it to this variable table
 table = File.read("sunrisesunset2020.txt")
+#quick and dirty daylight savings time array from wikipedia
+#note: DST goes into effect on-the-day at 2am
+dst = ["2019-03-10", "2019-11-03", "2020-03-08", "2020-11-01", "2021-03-14", "2021-11-07"]
 
 #convert raw txt into array; each line is an array element
 rawArr = table.split("\n")
