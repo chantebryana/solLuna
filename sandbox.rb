@@ -189,17 +189,51 @@ def date_to_index (array)
 end
 dst_index = date_to_index dst_raw
 
-monthHash.each do |key, value|
+#separate method that adds 1 hour for dst 
+#(use in monthHash.each loop)
+#"0606" becomes "0706"
+def add_hour_dst(value)
 	temp = 0
-	if key == dst_index[0] || key == dst_index[2]
-		puts "conditional addition"
-		#puts value
-	elsif key > dst_index[0] || key < dst_index[2]
+	temp = value.to_i
+	temp += 100					# <-- add 1 hour for dst
+	#reassign array value to dst timestamp:
+	if temp < 1200			#<-- if sunrise (need to manually add "0" to int
+		value = "0"+temp.to_s
+	elsif								#<-- if sunset
+		value = temp.to_s
+	end
+	return value
+end
+
+#accounting for dst (with if/else conditions)
+monthHash.each do |key, value|
+	#if March
+	if key == dst_index[0]
+		puts "conditional addition mar"
+		value.each_with_index do |x, i|
+			if x != false
+				if i >= dst_index[1]
+					monthHash[key][i] = add_hour_dst x
+				end
+			end
+		end
+	#if November
+	elsif key == dst_index[2]
+		puts "conditional addition nov"
+		value.each_with_index do |x, i|
+			if x != false
+				if i < dst_index[3]
+					monthHash[key][i] = add_hour_dst x
+				end
+			end
+		end
+	#if Apr, May, Jun, Jul, Aug, Sep, or Oct
+	elsif key > dst_index[0] && key < dst_index[2]
 		puts "add add baby"
-		if value == true
-			temp = value.to_i
-			temp =+ 100
-			value = "0"+temp
+		value.each_with_index do |x, i|
+			if x != false
+				monthHash[key][i] = add_hour_dst x
+			end
 		end
 	end
 end
