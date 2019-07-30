@@ -244,28 +244,6 @@ monthHash.each do |key, value|
   puts "\n"
 end
 #=end
-=begin
-#display monthHash+dst to console
-monthHash.each do |key, value|
-	if key == dst_index[0]
-		value.each_with_index do |v,i|
-			if i == dst_index[1]
-				#v.to_i += 100
-				puts "#{key} #{v}"
-				puts "\n"
-			end
-		end
-	elsif key == dst_index[2]
-		value.each_with_index do |v,i|
-			if i == dst_index[3]
-				#v.to_i += 100
-				puts "#{key} #{v}"
-				puts "\n"
-			end
-		end
-	end
-end
-=end
 
 #items for consideration: 
 #  accounting for daylight savings time (do I need another table of dst dates?)
