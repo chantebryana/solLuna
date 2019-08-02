@@ -58,6 +58,6 @@ module Play
 			end
 		end
 		
-		return rawHash
+		return monthHash
 	end 
 end
