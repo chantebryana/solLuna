@@ -1,4 +1,35 @@
 module Play
+	#fill rawHash with number keys and empty array values. 
+	#executed within riseSetFromTable block
+	#Returns {row1: [], row2: [] ... row 31: []}
+	def hashSkelington (num1, num2) 
+		hash = Hash.new
+		((num1-2)..(num2-2)).each do |i|
+			hash["row"+i.to_s] = []
+		end
+		return hash
+	end 
+	
+	#Fill rawHash with rise/set times from rawArr. 
+	#Empty slots (rows 29, 30, 31) will be filled with `false` (so that it'll fail an an 'if rawHash[i]' test)
+	#Returns {row1: ["01", "0750"..."1656"] ... row31: ["31", "0736", "1739", false, false...]}
+	def timesFromTable (num1, num2, arr)
+		hash = Hash.new
+		hash = hashSkelington num1, num2
+		(num1..num2).each do |i|
+			arr[i].split(/    /).each do |x|
+				if x == ""
+					hash["row"+(i-2).to_s].push(false)
+				else
+					x.split(" ").each do |y|
+						hash["row"+(i-2).to_s].push(y)
+					end
+				end
+			end
+		end
+		return hash
+	end
+	
 	def digestTable (fileName) 
 		#save passed argument to this variable table
 		table = File.read(fileName)
@@ -11,24 +42,12 @@ module Play
 
 		#fill rawHash with number keys and empty array values. 
 		#Returns {row1: [], row2: [] ... row 31: []}
-		(1..31).each do |i|
-			rawHash["row"+i.to_s] = []
-		end
+		#rawHash = hashSkelington 1, 31
 
 		#Fill rawHash with rise/set times from rawArr. 
 		#Empty slots (rows 29, 30, 31) will be filled with `false` (so that it'll fail an an 'if rawHash[i]' test)
 		#Returns {row1: ["01", "0750"..."1656"] ... row31: ["31", "0736", "1739", false, false...]}
-		(3..33).each do |i|
-			rawArr[i].split(/    /).each do |x|
-				if x == ""
-					rawHash["row"+(i-2).to_s].push(false)
-				else
-					x.split(" ").each do |y|
-						rawHash["row"+(i-2).to_s].push(y)
-					end
-				end
-			end
-		end
+		rawHash = timesFromTable 3, 33, rawArr
 
 		#grab months from rawArr
 		#returns ["Jan.", "Feb." ... "Dec."]
