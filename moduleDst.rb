@@ -58,12 +58,10 @@ module PlayDst
 				monthHash[(monthDoubleIndex[i])].push(v)
 			end
 		end
-
-		#CE playing in the mud
-		#set variable for quick-and-dirty daylight savings time
-		dst_raw = [3, 10, 11, 3]
 		
-		#CE play with dst, json parsing
+		#parse json from last line of table array;
+		#convert dst dates into usable arrays
+		#eg, 2019-03-10 and 2019-11-03 turn into [3, 10, 11, 3]
 		def dstParse (num, arr)
 			rawDst = JSON.parse(arr[num])
 			springDate = rawDst['springForward'].split("-")
@@ -75,8 +73,8 @@ module PlayDst
 			dstArr[3] = fallDate[2].to_i
 			return dstArr
 		end
-		
 		dstDate = dstParse 36, rawArr
+		
 		#convert raw dst date numbers into the correct index 
 		#to use when searching through monthHash
 		#ex: [3, 10, 11, 3] becomes [3, 18, 11, 4]
@@ -91,7 +89,7 @@ module PlayDst
 			end
 			return a
 		end
-		dst_index = date_to_index dst_raw
+		dst_index = date_to_index dstDate
 
 		#separate method that adds 1 hour for dst 
 		#(use in monthHash.each loop)
@@ -113,7 +111,7 @@ module PlayDst
 		monthHash.each do |key, value|
 			#if March
 			if key == dst_index[0]
-				#puts "conditional addition mar"
+				puts "conditional addition mar"
 				value.each_with_index do |x, i|
 					if x != false
 						if i >= dst_index[1]
@@ -123,7 +121,7 @@ module PlayDst
 				end
 			#if November
 			elsif key == dst_index[2]
-				#puts "conditional addition nov"
+				puts "conditional addition nov"
 				value.each_with_index do |x, i|
 					if x != false
 						if i < dst_index[3]
@@ -133,14 +131,14 @@ module PlayDst
 				end
 			#if Apr, May, Jun, Jul, Aug, Sep, or Oct
 			elsif key > dst_index[0] && key < dst_index[2]
-				#puts "add add baby"
+				puts "add add baby"
 				value.each_with_index do |x, i|
 					if x != false
 						monthHash[key][i] = add_hour_dst x
 					end
 				end
 			else 
-				#puts "do nothing"
+				puts "do nothing"
 			end
 		end
 
