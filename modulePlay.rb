@@ -1,3 +1,5 @@
+require 'json'
+
 module Play
 	#fill rawHash with number keys and empty array values. 
 	#executed within riseSetFromTable block
@@ -36,6 +38,40 @@ module Play
 		
 		#convert raw txt into array; each line is an array element
 		rawArr = table.split("\n")
+		
+		#CE play with dst, json parsing
+		def dstParse (num, arr)
+			rawDst = JSON.parse(arr[num])
+			springDate = rawDst['springForward'].split("-")
+			fallDate = rawDst['fallBack'].split("-")
+			dstArr = []
+			dstArr[0] = springDate[1].to_i
+			dstArr[1] = springDate[2].to_i
+			dstArr[2] = fallDate[1].to_i
+			dstArr[3] = fallDate[2].to_i
+			return dstArr
+		end
+		
+		dst = dstParse 36, rawArr
+		p dst
+		
+		#convert raw dst date numbers into the correct index 
+		#to use when searching through monthHash
+		#ex: [3, 10, 11, 3] becomes [3, 18, 11, 4]
+		def date_to_index (array)
+			a = []
+			array.each_with_index do |x, i|
+				if i % 2 == 1
+					a.push((x*2)-2)
+				else
+					a.push(x)
+				end
+			end
+			return a
+		end
+
+		dst_index = date_to_index dst
+		puts dst_index
 		
 		#declare new hash variable
 		rawHash = Hash.new
